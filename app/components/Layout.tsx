@@ -7,14 +7,14 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="fixed top-0 flex w-full max-w-6xl flex-row items-center justify-between bg-white px-5 pt-10">
+      <div className="fixed top-0 z-10 flex w-full max-w-6xl flex-row items-center justify-between bg-white px-5 pt-10 sm:pb-5 sm:text-2xl">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="size-6"
+          className="size-6 sm:size-10"
         >
           <path
             strokeLinecap="round"
@@ -25,14 +25,14 @@ export default function Layout({ children }: LayoutProps) {
         <Link href="/">
           <div className="min-w-max font-extrabold">MATCH BALL</div>
         </Link>
-        <div className="-ml-5 flex flex-row items-center">
+        <div className="-ml-5 flex flex-row items-center sm:-ml-10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-5"
+            className="size-5 sm:size-10"
           >
             <path
               strokeLinecap="round"
@@ -46,7 +46,7 @@ export default function Layout({ children }: LayoutProps) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="ml-2 size-5"
+            className="ml-2 size-5 sm:ml-5 sm:size-10"
           >
             <path
               strokeLinecap="round"
@@ -57,8 +57,10 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </div>
       {children}
-      <div className="bottom-0 w-full bg-gray-300 hidden sm:block mt-30">
-        <div className="bottom-0 mx-auto max-w-6xl py-10 text-gray-500">footer</div>
+      <div className="mt-30 bottom-0 hidden w-full bg-gray-300 sm:block">
+        <div className="bottom-0 mx-auto max-w-6xl py-10 text-gray-500">
+          footer
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,11 @@
+"use client";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import { cls } from "../libs/utils";
 import Calendar from "react-calendar";
+import "../styles/calendar.css";
+import moment from "moment";
+import "moment/locale/ko";
 
 export default function Home() {
   return (
@@ -10,14 +14,27 @@ export default function Home() {
         <div className="px-7 py-3 text-lg font-bold">매치 개설</div>
         <div className="px-9 py-3 font-semibold">일정 등록</div>
         <div className="px-7">
-          <div className="h-64 rounded-xl shadow-[0px_0px_5px_1px_rgba(0,0,0,0.1)]">
-            <Calendar locale="ko" />
+          <div className="rounded-xl shadow-[0px_0px_5px_1px_rgba(0,0,0,0.1)]">
+            <Calendar
+              calendarType="gregory"
+              locale="ko"
+              formatDay={(locale, date) => moment(date).format("D")}
+              showNeighboringMonth={false}
+              formatMonthYear={(locale, date) =>
+                moment(date).format("YYYY. MM")
+              }
+              formatYear={(locale, date) => moment(date).format("YYYY")}
+              minDetail="year"
+              className="react-calendar"
+              prev2Label={null}
+              next2Label={null}
+            />
           </div>
         </div>
         <div className="mt-5 px-9 py-3 font-semibold">장소 등록</div>
         <div className="px-7">
           <div className="flex h-28 flex-col justify-between rounded-xl px-5 py-5 shadow-[0px_0px_5px_1px_rgba(0,0,0,0.1)]">
-            <div className="flex flex-row items-center rounded-full bg-[#F4F4F4] px-3">
+            <div className="flex flex-row items-center rounded-full bg-[#F4F4F4] px-3 hover:bg-[#FAFAFA]">
               <svg
                 data-slot="icon"
                 fill="currentColor"
@@ -48,7 +65,7 @@ export default function Home() {
         <div className="mt-5 px-9 py-3 font-semibold">매치 정보 등록</div>
         <div className="px-7">
           <div className="h-64 rounded-xl px-5 py-5 shadow-[0px_0px_5px_1px_rgba(0,0,0,0.1)] sm:h-96">
-            <textarea className="h-full w-full border-0 focus:ring-0" />
+            <textarea className="resize-none h-full w-full border-0 focus:ring-0" />
           </div>
         </div>
         <div className="flex w-full flex-row items-center justify-center space-x-10 px-7 py-10">
